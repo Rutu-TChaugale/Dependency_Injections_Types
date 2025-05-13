@@ -1,34 +1,50 @@
-Spring Dependency Injection: Constructor vs Setter (Primitive Types)
-Welcome to this project that explores Spring Dependency Injection (DI) using both Constructor-based and Setter-based approaches with primitive types. Dive into understanding how Spring manages dependency injection in these two different styles and see how each approach works with primitive data types.
 
-🎯 Project Overview
-This repository consists of two distinct projects to demonstrate the different styles of dependency injection in Spring:
+# Spring Dependency Injection: Constructor vs Setter (Primitive Types)
 
-1. Constructor-based Dependency Injection (Primitive Types)
-This project demonstrates how Spring injects primitive values into a class through its constructor. Learn how to use the DI container to inject values such as integers, strings, and booleans via constructor-based injection.
+This repository demonstrates how to implement **Dependency Injection (DI)** in Spring Framework using **primitive types** through two different approaches: **constructor-based** and **setter-based** injection.
 
-2. Setter-based Dependency Injection (Primitive Types)
-This project highlights setter-based injection, where Spring calls setter methods to inject primitive values into a bean's properties. Discover how to configure and manage dependencies using setter methods in this setup.
+---
 
-🚀 Getting Started
-Follow these simple steps to get up and running with the project:
+## 📁 Projects Overview
 
-1. Clone the Repository
-bash
-Copy
-Edit
-git clone https://github.com/your-username/repository-name.git
-2. Import into IDE
-Eclipse/STS: Import as a Spring-based Maven project.
+### 🔹 1. `Fifth_Dependency_Injection_constructorbase_primivetype`
+- Demonstrates **constructor-based** injection.
+- Injects primitive values like `int`, `String`, and `boolean` using class constructors.
+- Uses Spring's XML configuration (`beans.xml`) to wire the values at bean instantiation.
 
-IntelliJ IDEA: Open the project folder directly.
+### 🔹 2. `FourthSpring_Dependency_Injection_setterbase`
+- Demonstrates **setter-based** injection.
+- Injects primitive values through setter methods.
+- Values are configured in the `beans.xml` and injected after bean instantiation.
 
-3. Add Dependencies
-Ensure the required dependencies are added in your pom.xml:
+---
 
-xml
-Copy
-Edit
+## 🧰 Prerequisites
+
+Make sure the following are installed:
+
+- Java 8 or higher  
+- Spring Framework 5.x  
+- Maven  
+- IDE like IntelliJ IDEA or Eclipse  
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the Repository
+```bash
+git clone https://github.com/your-username/your-repo-name.git
+````
+
+### 2. Import into IDE
+
+* Open as a Maven project.
+* Let the IDE resolve dependencies.
+
+### 3. Add Spring Dependencies (`pom.xml`)
+
+```xml
 <dependencies>
     <dependency>
         <groupId>org.springframework</groupId>
@@ -46,73 +62,97 @@ Edit
         <version>5.3.18</version>
     </dependency>
 </dependencies>
-4. Run the Project
-Run the Test.java class in each project. Spring will automatically manage bean creation and dependency injection based on the configuration.
+```
 
-💡 Key Concepts
-🔑 Constructor-based Dependency Injection
-Spring uses the constructor to inject the necessary primitive values into the bean at the time of creation.
+### 4. Run the Application
 
-Preferred for required dependencies because it enforces immutability.
+* Navigate to the `Test.java` class in each project.
+* Right-click and run it as a Java Application.
 
-Example:
-java
-Copy
-Edit
+---
+
+## 📚 Key Concepts
+
+### ✅ Constructor-based Injection
+
+Spring injects values through the class constructor.
+
+```java
 public class Student {
     private int studentId;
 
     public Student(int studentId) {
         this.studentId = studentId;
     }
+
+    public int getStudentId() {
+        return studentId;
+    }
 }
-🔑 Setter-based Dependency Injection
-Spring uses setter methods to inject primitive values into a bean's properties.
+```
 
-Useful for optional dependencies where you can set values after the object creation.
+### ✅ Setter-based Injection
 
-Example:
-java
-Copy
-Edit
+Spring injects values via setter methods after bean creation.
+
+```java
 public class Student {
     private int studentId;
 
     public void setStudentId(int studentId) {
         this.studentId = studentId;
     }
+
+    public int getStudentId() {
+        return studentId;
+    }
 }
-🗂️ Project Structure
-plaintext
-Copy
-Edit
+```
+
+---
+
+## 🗂 Project Structure
+
+```
 src/
-│
-├── com/
-│   └── sit/
-│       └── client/
-│           └── Test.java
-│       └── model/
-│           ├── Student.java
-│           └── beans.xml
-├── Spring_Jar/
-│   ├── spring-beans-5.3.18.jar
-│   ├── spring-context-5.3.18.jar
-│   ├── spring-core-5.3.18.jar
-└── FirstSpringProject/
-    └── FirstHibernate.xmlBase
-⚡ How to Test
-Constructor-based Injection:
-Test Case: Inject an integer value (e.g., studentId) via the constructor.
+├── com/sit/client/
+│   └── Test.java
+├── com/sit/model/
+│   ├── Student.java
+│   └── beans.xml
+Spring_Jar/
+├── spring-beans-5.3.18.jar
+├── spring-context-5.3.18.jar
+└── spring-core-5.3.18.jar
+```
 
-Expected Outcome: Spring injects the primitive type and initializes the bean.
+---
 
-Setter-based Injection:
-Test Case: Use setter methods to inject values into properties like studentId.
+## 🧪 How to Test
 
-Expected Outcome: Spring invokes setter methods to assign values after bean instantiation.
+### 🔹 Constructor Injection
 
-🔍 Conclusion
-This project provides a simple yet effective comparison of constructor-based vs setter-based dependency injection in Spring, specifically for primitive data types. Constructor-based injection is often more desirable for mandatory dependencies, as it ensures immutability of the object. However, setter-based injection is more flexible and suitable for optional dependencies.
+* Set primitive values in `beans.xml` under constructor-arg tags.
+* Run `Test.java` and observe the values injected into the bean constructor.
 
-Feel free to explore both approaches and enhance your understanding of Spring DI with this hands-on demonstration.
+### 🔹 Setter Injection
+
+* Set primitive values in `beans.xml` using property tags.
+* Run `Test.java` and check the setter methods being invoked.
+
+---
+
+## ✅ Conclusion
+
+This mini-project offers a hands-on comparison between:
+
+* **Constructor-based DI** – Best for required values, promotes immutability.
+* **Setter-based DI** – More flexible, allows optional value injection.
+
+Both are valid Spring DI techniques. Explore both to understand where and when to apply them!
+
+---
+
+> 📌 *Feel free to fork this repo, play with the configuration, and extend it to include object-type injections or annotations-based DI!*
+
+`
